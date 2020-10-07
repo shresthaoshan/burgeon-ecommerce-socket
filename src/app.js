@@ -15,6 +15,9 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// some configs
+app.use(express.static('public'))
+
 // route defs
 app.use('/api', require('./routes/api'))
 
