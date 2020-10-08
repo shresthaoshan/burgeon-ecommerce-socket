@@ -1,13 +1,14 @@
 {
-  "name": "burgeon-ecommerce-task",
+  "name": "burgeon-ecommerce-socket",
   "version": "1.0.0",
-  "description": "second task for burgeon to familiarize with the architecture and also brush up the skills",
+  "description": "third task for burgeon to brush up the skills and learn stuffs",
   "main": "server.js",
-  "repository": "https://github.com/shresthaoshan/burgeon-ecommerce-task.git",
+  "repository": "https://github.com/shresthaoshan/burgeon-ecommerce-socket.git",
   "author": "shresthaoshan <os02411418@student.ku.edu.np>",
   "license": "ISC",
   "private": false,
   "dependencies": {
+    "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

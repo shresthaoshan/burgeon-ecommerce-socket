@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Axios from 'axios'
 
 import Head from '../../components/Head'
 
@@ -9,12 +10,34 @@ export default function Login() {
     let [ password, passwordUpdater ] = useState('')
     let [ error, errorUpdater ] = useState('')
 
-    const login = (e) => {
+    const login = async e => {
         e.preventDefault()
 
         if (!email || !password) return errorUpdater('Both email and password are required.')
 
-        alert("Logged in!!!")
+        errorUpdater('')
+
+        try {
+            let loggedIn = await Axios({
+                method: 'POST',
+                url: '/api/user/login',
+                data: {
+                    email, password
+                }
+            })
+
+            const { message, token } = loggedIn.data
+
+            if (!token) return errorUpdater("There must've been some issue on the server.")
+
+            localStorage.setItem("token", token)
+            
+            window.location.assign('/seller')
+
+        } catch (e) {
+            if (e.response.data) return errorUpdater(e.response.data.message)
+            errorUpdater("There was an error while attempting to login.")
+        }
     }
 
     return <div>

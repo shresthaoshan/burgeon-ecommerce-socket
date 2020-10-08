@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react'
 
-export default function(props) {
-    useEffect(async () => {
-        const token = await localStorage.getItem('token')
+export default function Index() {
+    let [ token, tokenUpdater ] = useState('')
+    
+    useEffect(() => {
+        const tkn = localStorage.getItem('token')
 
-        if (!token) window.location.assign('seller/login')
-    }, [])
+        if (!tkn) window.location.assign('seller/login')
+
+        tokenUpdater(tkn)
+    }, [token])
 
     return <div>
         <h3>Seller Dashboard</h3>
+        <p>Token: {token}</p>
     </div>
 }
