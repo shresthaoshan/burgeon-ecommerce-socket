@@ -11,7 +11,7 @@ export default function Head(props) {
             
             <title>{ title && `${title} - ` }Burgeon eCommerce</title>
 
-            <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&family=Peddana&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&family=Spartan:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
             <link rel="stylesheet" href="/styles/basic.css"/>
 
             {

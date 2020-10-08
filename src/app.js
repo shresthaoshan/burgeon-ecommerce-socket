@@ -23,9 +23,7 @@ app.use('/api', require('./routes/api'))
 
 // make use of NextJs
 nextServer.prepare().then(() => {
-    app.get('*', (req, res) => {
-        handle(req, res)
-    })
+    app.get('*', (req, res) => handle(req, res))
 })
 
 module.exports = app

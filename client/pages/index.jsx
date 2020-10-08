@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
-import Head from '../components/Head'
+import ShopTemplate from '../components/ShopTemplate'
+
 
 export default function Index(props) {
     let [ message, messageUpdater ] = useState('')
 
     useEffect(() => {
+        const token = localStorage.getItem("token")
+
         messageUpdater("Hello, world!!!")
     }, [])
 
     return(
-        <div>
-            <Head title="Home" />
-            <h3>{message}</h3>
-        </div>
+        <ShopTemplate>
+            <h3>Hello world!!</h3>
+        </ShopTemplate>
     )
 }
