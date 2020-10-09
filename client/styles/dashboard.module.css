@@ -1,0 +1,36 @@
+.cardsContainer {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1400px;
+    box-sizing: border-box;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+}
+.card {
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    background: rgb(39, 209, 209);
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+.cardTitle {
+    padding: 0;
+    margin: 10px 0 2.5px 0;
+    font-family: var(--font-prim);
+    font-size: 18px;
+}
+.cardBrand {
+    font-size: 12px;
+    margin: 0;
+    color: #333;
+}
+.cardDescription {
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: var(--font-prim);
+
+    text-align: justify;
+}

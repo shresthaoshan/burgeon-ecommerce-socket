@@ -21,6 +21,7 @@ require('./src/models/User')
 require('./src/models/Product')
 require('./src/models/Category')
 require('./src/models/Cart')
+require('./src/models/Inventory')
 
 // prepare and initiate server
 const port = process.env.PORT || 3000
