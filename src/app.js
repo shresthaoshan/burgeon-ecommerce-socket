@@ -1,5 +1,6 @@
 const express = require('express')
 const next = require('next')
+const http = require('http')
 
 // initiate and config NextJs
 const nextServer = next({
@@ -11,9 +12,12 @@ const handle = nextServer.getRequestHandler()
 // initiate ExpressJs server
 const app = express()
 
+
 // middleware defs
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+const server = http.createServer(app)
 
 // some configs
 app.use(express.static('public'))
@@ -26,4 +30,4 @@ nextServer.prepare().then(() => {
     app.get('*', (req, res) => handle(req, res))
 })
 
-module.exports = app
+module.exports = server

@@ -15,6 +15,6 @@ export default function ShopTemplate(props) {
             }
         </main>
 
-        <script src="https://kit.fontawesome.com/25c1aa0c81.js" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/25c1aa0c81.js" crossOrigin="anonymous" />
     </Fragment>
 }

@@ -26,5 +26,12 @@ require('./src/models/Inventory')
 // prepare and initiate server
 const port = process.env.PORT || 3000
 
-require('./src/app').listen(port,
+// load servers: http and socket
+const http = require('./src/app')
+const io = require('./src/socket')
+
+// attach socket to http
+io.attach(http)
+
+http.listen(port,
     () => console.log(`Server active at port: ${port}\n`))

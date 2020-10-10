@@ -1,6 +1,9 @@
 import Events from 'events'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Axios from 'axios'
+
+import io from 'socket.io-client'
 
 import Head from '../../components/Head'
 
@@ -11,14 +14,21 @@ export default function Index() {
     let [ error, errorUpdater ] = useState('')
     let [ inventory, inventoryUpdater ] = useState([])
 
+    const router = useRouter()
+
     const watcher = new Events.EventEmitter()
 
     watcher.on("token", async payload => {
         Axios.interceptors.request.use((cfg) => {
             const Authorization = `Bearer ${payload.token}`
             cfg.headers.Authorization = Authorization
-            
             return cfg
+        })
+
+        const socket = io('http://localhost:3000')
+
+        socket.on("welcome", data => {
+            console.log(data)
         })
 
         await getProducts()
