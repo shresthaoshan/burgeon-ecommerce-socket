@@ -23,6 +23,7 @@
   },
   "scripts": {
     "dev": "nodemon -r dotenv/config",
+    "build": "next build client",
     "start": "node -r dotenv/config server"
   }
 }
