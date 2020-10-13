@@ -1,3 +1,4 @@
+require('dotenv').config()
 // load and prepare database connection
 const mongoose = require('mongoose')
 
