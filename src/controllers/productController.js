@@ -1,5 +1,6 @@
 // import services
 const ProductService = require('../services/productService')
+const InventoryService = require('../services/inventoryService')
 
 // controllers
 
@@ -9,9 +10,12 @@ exports.addProduct = async (req, res) => {
 
     const addedProduct = await ProductService.AddProduct(name, description, inStock, price, brand, category)
 
+    const updatedInventory = await InventoryService.AddInventory(req.user._id, addedProduct._id)
+    
     res.json({
         message: "Product added successfully.",
-        addedProduct
+        addedProduct,
+        updatedInventory
     })
 }
 

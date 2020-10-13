@@ -43,7 +43,7 @@ export default function Index() {
 
             console.log(products.data.products)
 
-            inventoryUpdater([...products.data.products,...products.data.products])
+            inventoryUpdater([...products.data.products])
         } catch (e) {
             console.log(e)
             errorUpdater(e.response.data.message || "There was an error updating the page.\nPlease refresh.")
@@ -60,7 +60,7 @@ export default function Index() {
         watcher.emit("token", { token: tkn })
     }, [])
 
-    return <div>
+    return <div className={styles.container}>
         <Head />
         <h3>Seller Dashboard</h3>
 
@@ -68,8 +68,16 @@ export default function Index() {
             <p>{error}</p>
         </div>
 
+
+
         <div className="inventory">
             Total no. of Products: {inventory.length}
+
+            <br/>
+
+            <button className={styles.buttonPrimary} onClick={() => router.push('./seller/addProduct')}>
+                Add Product
+            </button>
 
             <div className={styles.cardsContainer}>
 
