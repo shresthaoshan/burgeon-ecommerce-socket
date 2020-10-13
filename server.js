@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: '/.env'})
 // load and prepare database connection
 const mongoose = require('mongoose')
 
