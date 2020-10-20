@@ -13,7 +13,8 @@ export default function Index(props) {
 
     return(
         <ShopTemplate>
-            <h3>Hello world!!!</h3>
+            <h3>{ message }</h3>
+            <p>System Environent: { process.env.NODE_ENV }</p>
             <p>Testing Continous Deployment (CD) with Github Actions!</p>
         </ShopTemplate>
     )
