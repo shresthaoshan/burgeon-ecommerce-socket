@@ -1,0 +1,8 @@
+.productShowcase {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (2fr)[4];
+      grid-template-columns: repeat(4, 2fr);
+  grid-auto-rows: 200px;
+}
+/*# sourceMappingURL=main.module.css.map */

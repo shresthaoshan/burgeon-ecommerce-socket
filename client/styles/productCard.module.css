@@ -1,0 +1,60 @@
+.productCard {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid rgba(85, 85, 85, 0.5);
+  background: white;
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
+  position: relative;
+}
+
+.productCard:hover {
+  background: rgba(238, 238, 238, 0.4);
+}
+
+.productCard h3 {
+  margin: 0;
+  font-family: 'Source Sans Pro';
+}
+
+.productCard p {
+  font-size: 13px;
+}
+
+.brand {
+  font-size: 13px;
+  color: #c3c3c3;
+}
+
+.description {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 16px;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+}
+
+.controls button {
+  padding: 10px 25px;
+  cursor: pointer;
+  color: green;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1.5px solid rgba(85, 85, 85, 0.5);
+  background: white;
+}
+/*# sourceMappingURL=productCard.module.css.map */
