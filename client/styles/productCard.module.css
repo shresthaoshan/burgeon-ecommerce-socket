@@ -18,7 +18,7 @@
 
 .productCard h3 {
   margin: 0;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
 }
 
 .productCard p {
@@ -37,7 +37,7 @@
 
 .price {
   font-size: 16px;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 700;
 }
 
@@ -56,5 +56,9 @@
   font-size: 18px;
   border: 1.5px solid rgba(85, 85, 85, 0.5);
   background: white;
+}
+
+.controls button:disabled {
+  color: rgba(0, 0, 0, 0.1);
 }
 /*# sourceMappingURL=productCard.module.css.map */
