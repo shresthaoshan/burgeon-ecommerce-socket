@@ -1,0 +1,21 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+    background: #e8e8e8;
+    background-repeat: no-repeat;
+}
+
+i.fa-spinner {
+    animation: spin 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

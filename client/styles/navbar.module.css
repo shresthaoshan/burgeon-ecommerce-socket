@@ -55,6 +55,10 @@
   list-style: none;
   margin: 0 20px;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .menu ul li button {
@@ -76,5 +80,42 @@
 .menu a {
   text-decoration: none;
   color: inherit;
+}
+
+.dropdown, .dropdownHidden {
+  width: 100px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+  -webkit-box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown hr, .dropdownHidden hr {
+  margin: 0;
+}
+
+.dropdown a li, .dropdownHidden a li {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  padding: 5px 5px 5px 10px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+}
+
+.dropdown a li:hover, .dropdownHidden a li:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dropdownHidden {
+  width: 0;
 }
 /*# sourceMappingURL=navbar.module.css.map */

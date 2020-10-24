@@ -5,15 +5,20 @@
           box-sizing: border-box;
   margin: 5px;
   padding: 5px;
-  border: 1px solid rgba(85, 85, 85, 0.5);
   background: white;
   -webkit-transition: 0.15s ease;
   transition: 0.15s ease;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(85, 85, 85, 0.25);
+  border-radius: 5px;
 }
 
 .productCard:hover {
-  background: rgba(238, 238, 238, 0.4);
+  -webkit-box-shadow: 2.5px 2.5px 7px rgba(0, 0, 0, 0.1), -2.5px -2.5px 7px rgba(0, 0, 0, 0.1);
+          box-shadow: 2.5px 2.5px 7px rgba(0, 0, 0, 0.1), -2.5px -2.5px 7px rgba(0, 0, 0, 0.1);
 }
 
 .productCard h3 {
@@ -56,9 +61,12 @@
   font-size: 18px;
   border: 1.5px solid rgba(85, 85, 85, 0.5);
   background: white;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .controls button:disabled {
   color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
 }
 /*# sourceMappingURL=productCard.module.css.map */
