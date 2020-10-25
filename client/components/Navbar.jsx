@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import User from './contexts/User'
+import Notifications from './contexts/Notifications'
 
 import styles from '../styles/navbar.module.css'
 
@@ -22,8 +23,8 @@ export default function Navbar(props) {
             <div className={styles.menu}>
                 <ul>
                     <li><a href="/categories"><i title="Categories" className="fa fa-layer-group"></i></a></li>
-                    {/* { userLoggedIn && <li><a href="/profile"><i title="Profile" className="fa fa-user"></i></a></li>} */}
                     { userLoggedIn && <ProfileIcon />}
+                    { userLoggedIn && <NotificationIcon /> }
                     { userLoggedIn && <li><a href="/cart"><i title="Cart" className="fa fa-opencart"></i></a></li> }
                     { !userLoggedIn && <li><a href="/login"><button>Login</button></a></li> }
                 </ul>
@@ -52,4 +53,22 @@ const ProfileIcon = () => {
             <a onClick={logout} href="/logout"><li>Logout</li></a>
         </div>
     </li>
+}
+
+const NotificationIcon = () => {
+    const notificationCount = useContext(Notifications)
+
+    const icon = () => notificationCount.length ? "fas fa-bell" : "far fa-bell"
+    const notificationStyle = () => notificationCount.length ? {color: "#32cd32"} : {}
+
+    return <li style={{position: "relative", cursor: "pointer"}}>
+        <i style={notificationStyle()} className={icon()}></i>
+        { notificationCount.length ? <NotificationBadge /> : null }
+    </li>
+}
+
+const NotificationBadge = () => {
+    return <div className={styles.notificationBadge}>
+        <div className={styles.signal}></div>
+    </div>
 }
