@@ -1,11 +1,10 @@
 import { useState, useEffect, createContext } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import ShopTemplate from '../components/ShopTemplate'
 import ProductCard from '../components/ProductCard'
 
 import Axios from 'axios'
-import Events from 'events'
 
 import styles from '../styles/main.module.css'
 

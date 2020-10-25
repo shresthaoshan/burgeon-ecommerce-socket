@@ -72,7 +72,9 @@ export default function Login() {
                     }
                     
                     <button disabled={loading} tabIndex={3} type="submit">{loading ? <i className="fa fa-spinner"></i> : "Login"}</button>
-                    <p>Not registered yet? <a href="/register">Create Account</a></p>
+                    <p style={{marginTop: "15px", marginBottom: "15px"}}>Not registered yet? <a href="/register">Create Account</a></p>
+                    <hr/>
+                    <p>Are you a seller? <a href="/seller">Log in here</a></p>
                 </form>
             </div>
         </DefaultTemplate>
