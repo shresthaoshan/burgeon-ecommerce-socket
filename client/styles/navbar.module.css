@@ -98,7 +98,11 @@
   margin: 0;
 }
 
-.dropdown a li, .dropdownHidden a li {
+.dropdown ul, .dropdownHidden ul {
+  display: unset;
+}
+
+.dropdown ul li, .dropdownHidden ul li {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -111,12 +115,18 @@
   transition: 0.15s linear;
 }
 
-.dropdown a li:hover, .dropdownHidden a li:hover {
+.dropdown ul li:hover, .dropdownHidden ul li:hover {
   background: rgba(0, 0, 0, 0.05);
 }
 
 .dropdownHidden {
   width: 0;
+}
+
+.notificationDropdown {
+  width: 200px;
+  max-height: 250px;
+  overflow-y: scroll;
 }
 
 .notificationBadge {

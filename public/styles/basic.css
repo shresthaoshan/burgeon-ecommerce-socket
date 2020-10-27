@@ -10,3 +10,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-prim)
 }
+.loading {
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading i {
+    font-size: 32px;
+}

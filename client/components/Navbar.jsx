@@ -47,23 +47,34 @@ const ProfileIcon = () => {
         <i onClick={e => dropdownStateTracker(!dropdownActive)} style={{cursor: "pointer"}} className="fa fa-user"></i>
         
         <div className={dropdownActive ? styles.dropdown : styles.dropdownHidden}>
-            <a href="/profile"><li>Profile</li></a>
-            <a href="/settings"><li>Setting</li></a>
-            <hr/>
-            <a onClick={logout} href="/logout"><li>Logout</li></a>
+            <ul>
+                <a href="/profile"><li>Profile</li></a>
+                <a href="/settings"><li>Setting</li></a>
+                <hr/>
+                <a onClick={logout} href="/logout"><li>Logout</li></a>
+            </ul>
         </div>
     </li>
 }
 
 const NotificationIcon = () => {
-    const notificationCount = useContext(Notifications)
+    const notifications = useContext(Notifications)
+    let [ dropdownActive, dropdownStateTracker ] = useState(false)
 
-    const icon = () => notificationCount.length ? "fas fa-bell" : "far fa-bell"
-    const notificationStyle = () => notificationCount.length ? {color: "#32cd32"} : {}
+    const icon = () => notifications.length ? "fas fa-bell" : "far fa-bell"
+    const notificationStyle = () => notifications.length ? {color: "#32cd32"} : {}
 
     return <li style={{position: "relative", cursor: "pointer"}}>
-        <i style={notificationStyle()} className={icon()}></i>
-        { notificationCount.length ? <NotificationBadge /> : null }
+        <i onClick={e => dropdownStateTracker(!dropdownActive)} style={notificationStyle()} className={icon()}></i>
+        { notifications.length ? <NotificationBadge /> : null }
+
+        <div className={dropdownActive ? `${styles.dropdown} ${styles.notificationDropdown}` : styles.dropdownHidden}>
+            <ul>
+                {
+                    notifications.map((item, i) => <li key={i}>{ item }</li>)
+                }
+            </ul>
+        </div>
     </li>
 }
 

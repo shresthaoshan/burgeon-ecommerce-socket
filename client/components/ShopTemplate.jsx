@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
+import io from 'socket.io-client'
 
 import Head from './Head'
 import Navbar from './Navbar'
@@ -9,21 +10,30 @@ import { ToastContainer } from 'react-toastify'
 
 import User from '../components/contexts/User'
 import Notifications from '../components/contexts/Notifications'
+import SocketConnection from './contexts/SocketConnection'
 
 export default function ShopTemplate(props) {
     let [ token, tokenHandler ] = useState('')
+    let [ Socket, SocketHandler ] = useState('')
+    let [ notifications, notificationHandler] = useState([])
 
     useEffect(() => {
         const tk = localStorage.getItem("user-token")
 
         tokenHandler(tk)
     }, [])
+
+    const SocketI = io('/', { query: { token } })
+
+    SocketI.on('notification', socket => {
+        notificationHandler([ socket.message, ...notifications ])
+    })
     
-    return <Fragment>
+    return <SocketConnection.Provider socket={Socket}>
             <Head title={props.title} />
 
             <User.Provider value={token && true} >
-                <Notifications.Provider value={[]}>
+                <Notifications.Provider value={notifications}>
                     <Navbar />
                 </Notifications.Provider>
 
@@ -40,5 +50,5 @@ export default function ShopTemplate(props) {
             />
 
             <script src="https://kit.fontawesome.com/25c1aa0c81.js" crossOrigin="anonymous" />
-    </Fragment>
+    </SocketConnection.Provider>
 }

@@ -14,8 +14,8 @@ export default function Login() {
     let [ troubleLoggingIn, logInHelper ] = useState(false)
     let [ loading, loadTracker ] = useState(false)
 
-    const login =  async e => {
-        e.preventDefault()
+    const login =  async ev => {
+        ev.preventDefault()
 
         if (!email || !password)
             return errorDispatcher("Fill in all the fields.")
@@ -70,7 +70,7 @@ export default function Login() {
                     {
                         troubleLoggingIn && <p style={{textAlign: "left", marginTop: "10px"}}><a style={{fontWeight: "400"}} href="/reset">Having trouble logging in?</a></p>
                     }
-                    
+
                     <button disabled={loading} tabIndex={3} type="submit">{loading ? <i className="fa fa-spinner"></i> : "Login"}</button>
                     <p style={{marginTop: "15px", marginBottom: "15px"}}>Not registered yet? <a href="/register">Create Account</a></p>
                     <hr/>
