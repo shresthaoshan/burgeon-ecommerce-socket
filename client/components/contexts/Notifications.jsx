@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const Notifications = createContext(false)
+const Notifications = createContext([])
 
 export default Notifications

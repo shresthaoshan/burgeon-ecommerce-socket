@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from 'react'
 
 import User from './contexts/User'
 import Notifications from './contexts/Notifications'
+import Cart from './contexts/Cart'
 
 import styles from '../styles/navbar.module.css'
 
 import SearchBox from './SearchBox'
 import Router from 'next/router'
 
-export default function Navbar(props) {
+export default function Navbar() {
     const userLoggedIn = useContext(User)
+    
     return <div className={styles.navbar}>
         <nav>
             <div className={styles.logo}>
@@ -25,7 +27,7 @@ export default function Navbar(props) {
                     <li><a href="/categories"><i title="Categories" className="fa fa-layer-group"></i></a></li>
                     { userLoggedIn && <ProfileIcon />}
                     { userLoggedIn && <NotificationIcon /> }
-                    { userLoggedIn && <li><a href="/cart"><i title="Cart" className="fa fa-opencart"></i></a></li> }
+                    { userLoggedIn && <CartIcon /> }
                     { !userLoggedIn && <li><a href="/login"><button>Login</button></a></li> }
                 </ul>
             </div>
@@ -42,9 +44,9 @@ const ProfileIcon = () => {
         Router.push('/login')
     }
     
-    return <li style={{position: "relative"}}>
+    return <li onClick={e => dropdownStateTracker(!dropdownActive)} style={{position: "relative"}}>
 
-        <i onClick={e => dropdownStateTracker(!dropdownActive)} style={{cursor: "pointer"}} className="fa fa-user"></i>
+        <i style={{cursor: "pointer"}} className="fa fa-user"></i>
         
         <div className={dropdownActive ? styles.dropdown : styles.dropdownHidden}>
             <ul>
@@ -64,8 +66,8 @@ const NotificationIcon = () => {
     const icon = () => notifications.length ? "fas fa-bell" : "far fa-bell"
     const notificationStyle = () => notifications.length ? {color: "#32cd32"} : {}
 
-    return <li style={{position: "relative", cursor: "pointer"}}>
-        <i onClick={e => dropdownStateTracker(!dropdownActive)} style={notificationStyle()} className={icon()}></i>
+    return <li onClick={e => dropdownStateTracker(!dropdownActive)} style={{position: "relative", cursor: "pointer"}}>
+        <i style={notificationStyle()} className={icon()}></i>
         { notifications.length ? <NotificationBadge /> : null }
 
         <div className={dropdownActive ? `${styles.dropdown} ${styles.notificationDropdown}` : styles.dropdownHidden}>
@@ -82,4 +84,25 @@ const NotificationBadge = () => {
     return <div className={styles.notificationBadge}>
         <div className={styles.signal}></div>
     </div>
+}
+
+const CartIcon = () => {
+    const cartItems = useContext(Cart)
+    console.log("Cart: ", cartItems)
+    return <li style={{position: "relative"}}>
+        <a href="/cart">
+            <i title="Cart" className="fa fa-opencart"></i>
+
+            <div className={styles.notificationBadge}>
+                {
+                    cartItems  ? 
+                    <div className={`${styles.signal} ${styles.cartBadge}`}>
+                        <b>{cartItems}</b>
+                    </div>
+                    : null
+                }
+            </div>
+        </a>
+
+    </li>
 }

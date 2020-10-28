@@ -8,13 +8,12 @@ import styles from '../styles/template.module.css'
 
 import { ToastContainer } from 'react-toastify'
 
-import User from '../components/contexts/User'
-import Notifications from '../components/contexts/Notifications'
-import SocketConnection from './contexts/SocketConnection'
+import User from './contexts/User'
+import Notifications from './contexts/Notifications'
+import Cart from './contexts/Cart'
 
 export default function ShopTemplate(props) {
     let [ token, tokenHandler ] = useState('')
-    let [ Socket, SocketHandler ] = useState('')
     let [ notifications, notificationHandler] = useState([])
 
     useEffect(() => {
@@ -30,17 +29,17 @@ export default function ShopTemplate(props) {
             console.log("Error: ws")
         })
 
-        SocketHandler(SocketI)
-
         tokenHandler(tk)
     }, [])
     
-    return <SocketConnection.Provider socket={Socket}>
+    return <Fragment>
             <Head title={props.title} />
 
             <User.Provider value={token && true} >
                 <Notifications.Provider value={notifications}>
-                    <Navbar />
+                    <Cart.Provider value={8} >
+                        <Navbar />
+                    </Cart.Provider>
                 </Notifications.Provider>
 
                 <main className={styles.container}>
@@ -56,5 +55,5 @@ export default function ShopTemplate(props) {
             />
 
             <script src="https://kit.fontawesome.com/25c1aa0c81.js" crossOrigin="anonymous" />
-    </SocketConnection.Provider>
+    </Fragment>
 }
