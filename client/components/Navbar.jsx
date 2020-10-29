@@ -44,7 +44,7 @@ const ProfileIcon = () => {
         e.preventDefault()
         localStorage.removeItem("user-token")
 
-        socket.emit("disconnect")
+        socket.disconnect()
 
         Router.push('/login')
     }
