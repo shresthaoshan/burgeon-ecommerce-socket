@@ -6,15 +6,18 @@ import Navbar from './Navbar'
 
 import styles from '../styles/template.module.css'
 
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 import User from './contexts/User'
 import Notifications from './contexts/Notifications'
 import Cart from './contexts/Cart'
+import SocketConnection from './contexts/SocketConnection'
 
 export default function ShopTemplate(props) {
     let [ token, tokenHandler ] = useState('')
     let [ notifications, notificationHandler] = useState([])
+    let [ socket, socketHandler ] = useState(null)
+    let [ cart, cartHandler ] = useState([])
 
     useEffect(() => {
         const tk = localStorage.getItem("user-token")
@@ -25,9 +28,24 @@ export default function ShopTemplate(props) {
             notificationHandler([ socket.message, ...notifications ])
         })
     
-        SocketI.on("error", () => {
-            console.log("Error: ws")
+        SocketI.on("processing-error", (err) => {
+            toast.error(err.message)
         })
+
+        SocketI.on("cart-added", data => {
+            const { cartItems } = data
+
+            cartHandler(cartItems)
+
+            toast.info(`Item added to cart successfully.`)
+        })
+
+        SocketI.on("cart-items", data => {
+            const { cartItems } = data
+            cartHandler(cartItems)
+        })
+        
+        socketHandler(SocketI)
 
         tokenHandler(tk)
     }, [])
@@ -36,17 +54,20 @@ export default function ShopTemplate(props) {
             <Head title={props.title} />
 
             <User.Provider value={token && true} >
-                <Notifications.Provider value={notifications}>
-                    <Cart.Provider value={8} >
-                        <Navbar />
-                    </Cart.Provider>
-                </Notifications.Provider>
+                
+                <SocketConnection.Provider value={socket}>
+                    <Notifications.Provider value={notifications}>
+                        <Cart.Provider value={cart} >
+                            <Navbar />
+                        </Cart.Provider>
+                    </Notifications.Provider>
 
-                <main className={styles.container}>
-                    {
-                        props.children
-                    }
-                </main>
+                    <main className={styles.container}>
+                        {
+                            props.children
+                        }
+                    </main>
+                </SocketConnection.Provider>
             </User.Provider>
 
             <ToastContainer

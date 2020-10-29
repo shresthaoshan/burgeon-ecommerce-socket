@@ -8,6 +8,7 @@ import styles from '../styles/navbar.module.css'
 
 import SearchBox from './SearchBox'
 import Router from 'next/router'
+import SocketConnection from './contexts/SocketConnection'
 
 export default function Navbar() {
     const userLoggedIn = useContext(User)
@@ -37,10 +38,14 @@ export default function Navbar() {
 
 const ProfileIcon = () => {
     let [ dropdownActive, dropdownStateTracker ] = useState(false)
+    const socket = useContext(SocketConnection)
 
     const logout = e => {
         e.preventDefault()
         localStorage.removeItem("user-token")
+
+        socket.emit("disconnect")
+
         Router.push('/login')
     }
     
@@ -88,16 +93,15 @@ const NotificationBadge = () => {
 
 const CartIcon = () => {
     const cartItems = useContext(Cart)
-    console.log("Cart: ", cartItems)
     return <li style={{position: "relative"}}>
         <a href="/cart">
             <i title="Cart" className="fa fa-opencart"></i>
 
             <div className={styles.notificationBadge}>
                 {
-                    cartItems  ? 
+                    cartItems.length  ? 
                     <div className={`${styles.signal} ${styles.cartBadge}`}>
-                        <b>{cartItems}</b>
+                        <b>{cartItems.length}</b>
                     </div>
                     : null
                 }
