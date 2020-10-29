@@ -78,7 +78,10 @@ const NotificationIcon = () => {
         <div className={dropdownActive ? `${styles.dropdown} ${styles.notificationDropdown}` : styles.dropdownHidden}>
             <ul>
                 {
-                    notifications.map((item, i) => <li key={i}>{ item }</li>)
+                    notifications.length ? notifications.map((item, i) => <li key={i}>{ item }</li>) : null
+                }
+                {
+                    !notifications.length && <li>All caught up!</li>
                 }
             </ul>
         </div>
