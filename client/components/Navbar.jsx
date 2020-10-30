@@ -105,9 +105,9 @@ const CartIcon = () => {
 
             <div className={styles.notificationBadge}>
                 {
-                    cartItems.length  ? 
+                    cartItems  ? 
                     <div className={`${styles.signal} ${styles.cartBadge}`}>
-                        <b>{cartItems.length}</b>
+                        <b>{cartItems}</b>
                     </div>
                     : null
                 }

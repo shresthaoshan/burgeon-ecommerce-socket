@@ -12,6 +12,8 @@ const handle = nextServer.getRequestHandler()
 // initiate ExpressJs server
 const app = express()
 
+// routes
+const api = require('./routes/api')
 
 // middleware defs
 app.use(express.json())
@@ -23,7 +25,7 @@ const server = http.createServer(app)
 app.use(express.static('public'))
 
 // route defs
-app.use('/api', require('./routes/api'))
+app.use('/api', api)
 
 // make use of NextJs
 nextServer.prepare().then(() => {

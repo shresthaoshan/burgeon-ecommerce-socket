@@ -11,7 +11,7 @@ exports.addCart = socket => async function(details) {
         const cartItems = await CartService.GetCartItems(_id)
 
         socket.emit("cart-added", {
-            cartItems
+            cartItems: cartItems.length
         })
     } catch (e) {
         socket.emit("processing-error", {
@@ -26,7 +26,7 @@ exports.getCartItems = socket => async function() {
         const cartItems = await CartService.GetCartItems(_id)
 
         socket.emit('cart-items', {
-            cartItems
+            cartItems: cartItems.length
         })
     } catch (e) {
         socket.emit("processing-error", {

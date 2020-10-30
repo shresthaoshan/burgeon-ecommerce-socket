@@ -92,6 +92,7 @@
   background: white;
   -webkit-box-shadow: 4px 4px 7px rgba(0, 0, 0, 0), -4px -4px 7px rgba(0, 0, 0, 0);
           box-shadow: 4px 4px 7px rgba(0, 0, 0, 0), -4px -4px 7px rgba(0, 0, 0, 0);
+  border: 1px solid rgba(68, 68, 68, 0.1);
   border-radius: 50%;
   -webkit-transition: 0.15s linear;
   transition: 0.15s linear;
