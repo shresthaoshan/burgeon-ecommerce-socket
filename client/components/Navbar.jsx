@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from 'react'
+import Router from 'next/router'
 
+// contexts
 import User from './contexts/User'
 import Notifications from './contexts/Notifications'
 import Cart from './contexts/Cart'
+import SocketConnection from './contexts/SocketConnection'
 
+// styles
 import styles from '../styles/navbar.module.css'
 
+// components
 import SearchBox from './SearchBox'
-import Router from 'next/router'
-import SocketConnection from './contexts/SocketConnection'
 
 export default function Navbar() {
     const userLoggedIn = useContext(User)
