@@ -6,4 +6,25 @@
   grid-auto-rows: 200px;
   padding-bottom: 30px;
 }
+
+@media (max-width: 1024px) {
+  .productShowcase {
+    -ms-grid-columns: (2fr)[3];
+        grid-template-columns: repeat(3, 2fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .productShowcase {
+    -ms-grid-columns: (2fr)[2];
+        grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .productShowcase {
+    -ms-grid-columns: (2fr)[1];
+        grid-template-columns: repeat(1, 2fr);
+  }
+}
 /*# sourceMappingURL=main.module.css.map */
