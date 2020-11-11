@@ -28,8 +28,8 @@ app.use(express.static('public'))
 app.use('/api', api)
 
 // make use of NextJs
-nextServer.prepare().then(() => {
-    app.get('*', (req, res) => handle(req, res))
-})
+// nextServer.prepare().then(() => {
+//     app.get('*', (req, res) => handle(req, res))
+// })
 
 module.exports = server

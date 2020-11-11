@@ -28,7 +28,7 @@ export default function Navbar() {
 
             <div className={styles.menu}>
                 <ul>
-                    <li><a href="/categories"><i title="Categories" aria-hidden={true} className="fa fa-layer-group"></i></a></li>
+                    <li><a href="/categories"><i title="Categories" className="fa fa-layer-group"></i></a></li>
                     { userLoggedIn && <ProfileIcon />}
                     { userLoggedIn && <NotificationIcon /> }
                     { userLoggedIn && <CartIcon /> }
@@ -54,7 +54,7 @@ const ProfileIcon = () => {
     
     return <li onClick={e => dropdownStateTracker(!dropdownActive)} style={{position: "relative"}}>
 
-        <i aria-hidden={true} style={{cursor: "pointer"}} className="fa fa-user"></i>
+        <i style={{cursor: "pointer"}} className="fa fa-user"></i>
         
         <div className={dropdownActive ? styles.dropdown : styles.dropdownHidden}>
             <ul>
@@ -75,7 +75,7 @@ const NotificationIcon = () => {
     const notificationStyle = () => notifications.length ? {color: "#32cd32"} : {}
 
     return <li onClick={e => dropdownStateTracker(!dropdownActive)} style={{position: "relative", cursor: "pointer"}}>
-        <i style={notificationStyle()} className={icon()} aria-hidden={true}></i>
+        <i style={notificationStyle()} className={icon()}></i>
         { notifications.length ? <NotificationBadge /> : null }
 
         <div className={dropdownActive ? `${styles.dropdown} ${styles.notificationDropdown}` : styles.dropdownHidden}>
@@ -101,7 +101,7 @@ const CartIcon = () => {
     const cartItems = useContext(Cart)
     return <li style={{position: "relative"}}>
         <a href="/cart">
-            <i title="Cart" aria-hidden={true} className="fa fa-opencart"></i>
+            <i title="Cart" className="fa fa-opencart"></i>
 
             <div className={styles.notificationBadge}>
                 {

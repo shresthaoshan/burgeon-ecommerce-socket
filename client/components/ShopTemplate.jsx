@@ -22,7 +22,7 @@ export default function ShopTemplate(props) {
     useEffect(() => {
         const tk = localStorage.getItem("user-token")
 
-        const SocketI = io('/socket', { query: { token: tk } })
+        const SocketI = io('/', { query: { token: tk } })
 
         SocketI.on('notification', socket => {
             notificationHandler([ socket.message, ...notifications ])
