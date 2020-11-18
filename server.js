@@ -25,7 +25,7 @@ require('./src/models/Cart')
 require('./src/models/Inventory')
 
 // prepare and initiate server
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 // load servers: http and socket
 const http = require('./src/app')
